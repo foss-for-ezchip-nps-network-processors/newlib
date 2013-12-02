@@ -38,3 +38,5 @@ lost+found
 
 *.log
 *.sum
+INSTALL
+newlib/obj
