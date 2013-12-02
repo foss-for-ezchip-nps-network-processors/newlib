@@ -127,7 +127,12 @@ __start:
 #else
 	; calling atexit drags in malloc, so instead poke the function
 	; address directly into the reent structure
+#if 1
+       mov_s   r0,@_impure_ptr
+       ld      r1,[r0,0]
+#else
 	ld	r1,[gp,@_impure_ptr@sda]
+#endif
  	mov_s	r0, @_fini 
 	add	r1,r1,0x14c	; &_GLOBAL_REENT->atexit0
 	st	r1, [r1,-4]	; _GLOBAL_REENT->atexit
